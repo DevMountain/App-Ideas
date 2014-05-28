@@ -24,7 +24,7 @@ static NSString * const titleKey = @"title";
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(margin, 0, self.contentView.bounds.size.width - (3 * margin), self.contentView.bounds.size.height)];
+        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(margin, 0, self.contentView.bounds.size.width - (3 * margin) - 100, self.contentView.bounds.size.height)];
         textField.placeholder = @"Idea Name";
         self.titleField = textField;
         [self.contentView addSubview:textField];

@@ -40,6 +40,7 @@ static NSString * const titleKey = @"title";
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     tableView.dataSource = self.dataSource;
+    tableView.rowHeight = 120;
     self.tableView = tableView;
     [self.view addSubview:tableView];
 
