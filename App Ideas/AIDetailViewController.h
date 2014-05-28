@@ -10,4 +10,6 @@
 
 @interface AIDetailViewController : UIViewController
 
+- (void)updateWithIdea:(NSDictionary *)idea;
+
 @end

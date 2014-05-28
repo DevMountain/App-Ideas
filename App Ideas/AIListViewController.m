@@ -62,6 +62,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
  
     AIDetailViewController *detailController = [AIDetailViewController new];
+    [detailController updateWithIdea:[self.dataSource ideas][indexPath.row]];
     [self.navigationController pushViewController:detailController animated:YES];
     
 }

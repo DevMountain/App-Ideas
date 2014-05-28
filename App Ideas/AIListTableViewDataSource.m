@@ -67,7 +67,6 @@ static NSString * const titleKey = @"title";
     // In order to save the cell if still editing we need to resign the responder and have the delegate methods called. So we reload the tableview before adding another idea
     [self.tableView reloadData];
     
-    
     NSMutableArray *mutableIdeas = [NSMutableArray arrayWithObject:@{titleKey: @""}];
     [mutableIdeas addObjectsFromArray:self.ideas];
     self.ideas = [NSArray arrayWithArray:mutableIdeas];

@@ -7,8 +7,16 @@
 //
 
 #import "AIDetailViewController.h"
+#import "AIDetailTableViewDataSource.h"
+
+static NSString * const titleKey = @"title";
 
 @interface AIDetailViewController ()
+
+@property (nonatomic, strong) NSDictionary *idea;
+@property (nonatomic, strong) AIDetailTableViewDataSource *dataSource;
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -18,7 +26,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.dataSource = [AIDetailTableViewDataSource new];
+    
     }
     return self;
 }
@@ -28,24 +37,31 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    tableView.dataSource = self.dataSource;
+    self.tableView = tableView;
+    [self.view addSubview:tableView];
+
+    [self.dataSource registerTableView:tableView];
+    
+    UIBarButtonItem *plusButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(newVoice)];
+    self.navigationItem.rightBarButtonItem = plusButton;
 
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)newVoice {
+    [self.dataSource newVoice];
+    [self.tableView reloadData];
 }
 
-/*
-#pragma mark - Navigation
+- (void)updateWithIdea:(NSDictionary *)idea {
+    self.idea = idea;
+    self.dataSource.idea = idea;
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    self.title = idea[titleKey];
+    
 }
-*/
+
 
 @end
