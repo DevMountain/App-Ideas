@@ -11,6 +11,7 @@
 static CGFloat margin = 15;
 
 static NSString * const userNameKey = @"userName";
+static NSString * const titleKey = @"title";
 static NSString * const scoreKey = @"score";
 
 @interface AIVoiceTableViewCell ()
@@ -18,6 +19,9 @@ static NSString * const scoreKey = @"score";
 @property (nonatomic, strong) UIButton *wantsButton;
 @property (nonatomic, strong) UIButton *mightUseButton;
 @property (nonatomic, strong) UIButton *wontUseButton;
+
+@property (nonatomic, strong) NSString *voiceDetailKey;
+@property (nonatomic, strong) NSDictionary *voiceDetail;
 
 @end
 
@@ -68,14 +72,24 @@ static NSString * const scoreKey = @"score";
     return self;
 }
 
-- (void)updateWithVoice:(NSDictionary *)voice {
+- (void)updateWithVoice:(NSDictionary *)voice idea:(NSDictionary *)idea {
     self.userNameField.text = voice[userNameKey];
     
-    [self updateScore:[voice[scoreKey] integerValue]];
+    self.voiceDetailKey = [NSString stringWithFormat:@"%@-%@", idea[titleKey], voice[userNameKey]];
+    self.voiceDetail = [[NSUserDefaults standardUserDefaults] objectForKey:self.voiceDetailKey];
+
+    [self updateScore:[self.voiceDetail[scoreKey] integerValue]];
+
 }
 
 - (void)scoreButtonSelected:(id)sender {
     [self updateScore:[sender tag]];
+    
+    NSMutableDictionary *voiceDetail = [[NSMutableDictionary alloc] initWithDictionary:self.voiceDetail];
+    [voiceDetail setObject:@([sender tag]) forKey:scoreKey];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:voiceDetail forKey:self.voiceDetailKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)updateScore:(NSInteger)score {
@@ -96,6 +110,7 @@ static NSString * const scoreKey = @"score";
         [self.wantsButton setBackgroundColor:[UIColor greenColor]];
         [self.wantsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }
+    
 }
 
 - (void)resetButtons {

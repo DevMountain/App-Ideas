@@ -48,7 +48,7 @@ static NSString * const scoreKey = @"score";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AIVoiceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:VoiceCellKey];
-    [cell updateWithVoice:self.userVoices[indexPath.row]];
+    [cell updateWithVoice:self.userVoices[indexPath.row] idea:self.idea];
     cell.userNameField.delegate = self;
     return cell;
 }

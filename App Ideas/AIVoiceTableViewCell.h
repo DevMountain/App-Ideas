@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) UITextField *userNameField;
 
-- (void)updateWithVoice:(NSDictionary *)voice;
+- (void)updateWithVoice:(NSDictionary *)voice idea:(NSDictionary *)idea;
 
 @end
