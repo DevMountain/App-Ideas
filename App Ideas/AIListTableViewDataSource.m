@@ -10,6 +10,7 @@
 #import "AIListTableViewCell.h"
 
 static NSString * const ListCellKey = @"listCell";
+static NSString * const PersistentListKey = @"persistentList";
 
 @interface AIListTableViewDataSource () <UITextFieldDelegate>
 
@@ -19,6 +20,25 @@ static NSString * const ListCellKey = @"listCell";
 @end
 
 @implementation AIListTableViewDataSource
+
+- (id)init {
+    
+    self = [super init];
+    if (self) {
+        
+        NSArray *list = [[NSUserDefaults standardUserDefaults] objectForKey:PersistentListKey];
+        self.ideas = list;
+        
+    }
+    return self;
+}
+
+- (void)setIdeas:(NSArray *)ideas {
+    _ideas = ideas;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:ideas forKey:PersistentListKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 - (void)registerTableView:(UITableView *)tableView {
     self.tableView = tableView;
