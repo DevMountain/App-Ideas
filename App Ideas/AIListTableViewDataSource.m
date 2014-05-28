@@ -12,6 +12,8 @@
 static NSString * const ListCellKey = @"listCell";
 static NSString * const PersistentListKey = @"persistentList";
 
+static NSString * const titleKey = @"title";
+
 @interface AIListTableViewDataSource () <UITextFieldDelegate>
 
 @property (nonatomic, weak) UITableView *tableView;
@@ -53,7 +55,10 @@ static NSString * const PersistentListKey = @"persistentList";
     AIListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ListCellKey];
     cell.titleField.tag = indexPath.row;
     cell.titleField.delegate = self;
-    [cell updateWithIdea:self.ideas[indexPath.row]];
+    
+    NSDictionary *idea = self.ideas[indexPath.row];
+    [cell updateWithIdea:idea];
+
     return cell;
 }
 
@@ -63,7 +68,7 @@ static NSString * const PersistentListKey = @"persistentList";
     [self.tableView reloadData];
     
     
-    NSMutableArray *mutableIdeas = [NSMutableArray arrayWithObject:@""];
+    NSMutableArray *mutableIdeas = [NSMutableArray arrayWithObject:@{titleKey: @""}];
     [mutableIdeas addObjectsFromArray:self.ideas];
     self.ideas = [NSArray arrayWithArray:mutableIdeas];
 }
@@ -72,8 +77,12 @@ static NSString * const PersistentListKey = @"persistentList";
 
     NSInteger index = textField.tag;
     
+    NSMutableDictionary *idea = [[NSMutableDictionary alloc] initWithDictionary:self.ideas[index]];
+    [idea setObject:textField.text forKey:titleKey];
+    
     NSMutableArray *mutableIdeas = [NSMutableArray arrayWithArray:self.ideas];
-    [mutableIdeas replaceObjectAtIndex:index withObject:textField.text];
+    [mutableIdeas replaceObjectAtIndex:index withObject:idea];
+    
     self.ideas = [NSArray arrayWithArray:mutableIdeas];
 }
 
