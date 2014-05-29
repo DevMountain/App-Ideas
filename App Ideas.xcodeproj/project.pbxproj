@@ -26,6 +26,7 @@
 		711A4F4C19365B5A005642EF /* AIDetailTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 711A4F4B19365B5A005642EF /* AIDetailTableViewDataSource.m */; };
 		711A4F4F19365F8F005642EF /* AIVoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 711A4F4E19365F8F005642EF /* AIVoiceTableViewCell.m */; };
 		711A4F581936A623005642EF /* AIListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 711A4F571936A623005642EF /* AIListTableViewCell.xib */; };
+		711A4F5F1937C0EB005642EF /* AIVoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 711A4F5E1937C0EB005642EF /* AIVoiceTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		711A4F4D19365F8F005642EF /* AIVoiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIVoiceTableViewCell.h; sourceTree = "<group>"; };
 		711A4F4E19365F8F005642EF /* AIVoiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIVoiceTableViewCell.m; sourceTree = "<group>"; };
 		711A4F571936A623005642EF /* AIListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIListTableViewCell.xib; sourceTree = "<group>"; };
+		711A4F5E1937C0EB005642EF /* AIVoiceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AIVoiceTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				711A4F3F193555A1005642EF /* AIDetailViewController.m */,
 				711A4F4D19365F8F005642EF /* AIVoiceTableViewCell.h */,
 				711A4F4E19365F8F005642EF /* AIVoiceTableViewCell.m */,
+				711A4F5E1937C0EB005642EF /* AIVoiceTableViewCell.xib */,
 				711A4F13193458CB005642EF /* Images.xcassets */,
 				711A4F08193458CB005642EF /* Supporting Files */,
 			);
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				711A4F581936A623005642EF /* AIListTableViewCell.xib in Resources */,
+				711A4F5F1937C0EB005642EF /* AIVoiceTableViewCell.xib in Resources */,
 				711A4F0C193458CB005642EF /* InfoPlist.strings in Resources */,
 				711A4F14193458CB005642EF /* Images.xcassets in Resources */,
 			);

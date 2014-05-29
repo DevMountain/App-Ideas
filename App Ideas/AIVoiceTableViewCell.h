@@ -10,7 +10,10 @@
 
 @interface AIVoiceTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UITextField *userNameField;
+@property (nonatomic, strong) IBOutlet UITextField *userNameField;
+@property (nonatomic, strong) IBOutlet UIButton *wantsButton;
+@property (nonatomic, strong) IBOutlet UIButton *mightUseButton;
+@property (nonatomic, strong) IBOutlet UIButton *wontUseButton;
 
 - (void)updateWithVoice:(NSDictionary *)voice idea:(NSDictionary *)idea;
 
